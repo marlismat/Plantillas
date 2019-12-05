@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration status="INFO">
+
+    <Appenders>
+     
+        <Console name="stdout" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/>
+        </Console>
+       
+     <File 
+     		name="fout" 
+     		fileName="/home/reactdev/intercorp/logs/ic-get-sale-representative/ic-get-sale-representative.log" 
+     		immediateFlush="false" 
+     		append="true">
+   		 <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/>
+     </File>	
+     
+<!--      <File  -->
+<!--      		name="fout"  -->
+<!--      		fileName="c:/ic-get-sale-representative-logs/ic-get-sale-representative.log"  -->
+<!--      		immediateFlush="false"  -->
+<!--      		append="true"> -->
+<!--           <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/> -->
+<!--     </File> -->
+
+    <RollingFile 
+	 	name="roll-by-size" 
+	    fileName="/home/reactdev/intercorp/logs/ic-get-sale-representative/log4j2/roll-by-size/ic-get-sale-representative.log" 
+	    filePattern="/home/reactdev/intercorp/logs/ic-get-sale-representative/target/log4j2/roll-by-size/ic-get-sale-representative.%i.log.gz" 
+	    ignoreExceptions="false"> 
+		<PatternLayout>
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Pattern>
+	  	</PatternLayout>
+		<Policies>
+			<OnStartupTriggeringPolicy />
+			<SizeBasedTriggeringPolicy size="5 KB" />
+		</Policies>
+	</RollingFile>    
+	    
+<!-- 	<RollingFile  -->
+<!-- 		name="roll-by-size"  -->
+<!-- 		fileName="c:/ic-get-sale-representative-Logs/log4j2/roll-by-size/ic-get-sale-representative.log"  -->
+<!-- 		filePattern="c:/ic-get-sale-representative-Logs/target/log4j2/roll-by-size/ic-get-sale-representative.%i.log.gz"  -->
+<!-- 		ignoreExceptions="false">     -->
+<!--             <PatternLayout> -->
+<!--                 <Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Pattern> -->
+<!--             </PatternLayout> -->
+<!--             <Policies> -->
+<!--                 <OnStartupTriggeringPolicy/> -->
+<!--                 <SizeBasedTriggeringPolicy -->
+<!--                     size="5 KB"/> -->
+<!--             </Policies> -->
+<!--         </RollingFile> -->
+
+	    <RollingFile 
+	    	name="roll-by-time" 
+	    	fileName="/home/reactdev/intercorp/logs/ic-get-sale-representative/log4j2/roll-by-time/ic-get-sale-representative.log" 
+	    	filePattern="/home/reactdev/intercorp/logs/ic-get-sale-representative/target/log4j2/roll-by-time/ic-get-sale-representative.%d{MM-dd-yyyy-HH-mm}.log.gz" ignoreExceptions="false"> 
+	    	ignoreExceptions="false">       
+            	<PatternLayout>
+                	<Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Pattern>
+            	</PatternLayout>
+            	<TimeBasedTriggeringPolicy/>
+	    </RollingFile>
+	    	
+	    	
+<!--         <RollingFile  -->
+<!--         	name="roll-by-time"  -->
+<!--         	fileName="c:/ic-get-sale-representative-Logs/roll-by-time/ic-get-sale-representative.log"  -->
+<!--         	filePattern="c:/ic-get-sale-representative-Logs/target/log4j2/roll-by-time/ic-get-sale-representative.%d{MM-dd-yyyy-HH-mm}.log.gz"  -->
+<!--         	ignoreExceptions="false">        -->
+<!--             	<PatternLayout> -->
+<!--                 	<Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Pattern> -->
+<!--             	</PatternLayout> -->
+<!--             	<TimeBasedTriggeringPolicy/> -->
+<!--         </RollingFile> -->
+
+	    <RollingFile 
+	    	name="roll-by-time-and-size" 
+	    	fileName="/home/reactdev/intercorp/logs/ic-get-sale-representative/roll-by-time-and-size/ic-get-sale-representative.log" 
+	    	filePattern="/home/reactdev/intercorp/logs/ic-get-sale-representative/target/log4j2/roll-by-time-and-size/ic-get-sale-representative.%d{MM-dd-yyyy-HH-mm}.%i.log.gz" 
+	    	ignoreExceptions="false"> 
+		<PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy
+                    size="5 KB"/>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${baseDir}" maxDepth="2">
+                <IfFileName glob="/home/reactdev/intercorp/logs/ic-get-sale-representative/log4j2/roll-by-time-and-size/ic-get-sale-representative.*.log.gz"/>
+                    <IfLastModified age="20s"/>
+                </Delete>
+            </DefaultRolloverStrategy>	    	
+	    </RollingFile>	
+	    	
+<!-- 		<RollingFile  -->
+<!-- 			name="roll-by-time-and-size"  -->
+<!-- 			fileName="c:/ic-get-sale-representative-Logs/logs/roll-by-time-and-size/ic-get-sale-representative.log"  -->
+<!-- 			filePattern="c:/ic-get-sale-representative-Logs/target/log4j2/roll-by-time-and-size/ic-get-sale-representative.%d{MM-dd-yyyy-HH-mm}.%i.log.gz"  -->
+<!-- 			ignoreExceptions="false"> -->
+<!--             <PatternLayout> -->
+<!--                 <Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Pattern> -->
+<!--             </PatternLayout> -->
+<!--             <Policies> -->
+<!--                 <OnStartupTriggeringPolicy/> -->
+<!--                 <SizeBasedTriggeringPolicy -->
+<!--                     size="5 KB"/> -->
+<!--                 <TimeBasedTriggeringPolicy/> -->
+<!--             </Policies> -->
+<!--             <DefaultRolloverStrategy> -->
+<!--                 <Delete basePath="${baseDir}" maxDepth="2"> -->
+<!--                     <IfFileName glob="c:/ic-get-sale-representative-Logs/roll-by-time-and-size/ic-get-sale-representative.*.log.gz"/> -->
+<!--                     <IfLastModified age="20s"/> -->
+<!--                 </Delete> -->
+<!--             </DefaultRolloverStrategy> -->
+<!--         </RollingFile> -->
+        
+    </Appenders>
+
+    <Loggers>
+    
+        <Logger name="com.digitel" level="INFO"/>
+
+        <Logger name="com.digitel" level="INFO">
+            <AppenderRef ref="roll-by-size"/>
+            <AppenderRef ref="roll-by-time"/>
+            <AppenderRef ref="roll-by-time-and-size"/>
+        </Logger>
+
+        <AsyncRoot level="INFO">
+            <AppenderRef ref="stdout"/>
+            <AppenderRef ref="fout"/>
+        </AsyncRoot>
+        
+    </Loggers>
+</Configuration>
